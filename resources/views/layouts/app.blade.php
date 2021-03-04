@@ -210,6 +210,9 @@
 
     @livewireScripts
     <!-- Vendor js -->
+      <!-- jquery para mensaje de enotificacion-->
+      <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
     <script src="{{ asset('assets/libs/moment/moment.min.js') }}"></script>
@@ -234,6 +237,35 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
+
+
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+
+  <!-- Required datatable js -->
+  <script src="{{ asset('assets/libs/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
+  <!-- Buttons examples -->
+  <script src="{{ asset('assets/libs/datatables/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/jszip/jszip.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/pdfmake/vfs_fonts.js') }}"></script>
+  <script src="{{ asset('assets/libs/datatables/buttons.html5.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/datatables/buttons.print.min.js') }}"></script>
+
+  <!-- Responsive examples -->
+  <script src="{{ asset('assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
+
+  <script src="{{ asset('assets/libs/datatables/dataTables.keyTable.min.js') }}"></script>
+  <script src="{{ asset('assets/libs/datatables/dataTables.select.min.js') }}"></script>
+
+  <!-- Datatables init -->
+  <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+
+  <!-- App js -->
+  <script src="{{ asset('assets/js/app.min.js') }}"></script>
 </body>
 
 </html>

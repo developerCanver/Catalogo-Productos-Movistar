@@ -182,7 +182,7 @@
 
             <!-- LOGO -->
             <div class="logo-box">
-                <a href="index.html" class="logo text-center logo-dark">
+                <a href="{{ url('/') }}" class="logo text-center logo-dark">
                     <span class="logo-lg">
                         <img src="assets/images/logo-dark.png" alt="" height="16">
                         <!-- <span class="logo-lg-text-dark">Velonic</span> -->
@@ -193,14 +193,14 @@
                     </span>
                 </a>
 
-                <a href="index.html" class="logo text-center logo-light">
+                <a href="{{ url('/') }}" class="logo text-center logo-light">
                     <span class="logo-lg">
                         <img src="assets/images/logo-light.png" alt="" height="16">
                         <!-- <span class="logo-lg-text-dark">Velonic</span> -->
                     </span>
                     <span class="logo-sm">
                         <!-- <span class="logo-lg-text-dark">V</span> -->
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <img src="assets/images/favicon.ico" alt="" height="22">
                     </span>
                 </a>
             </div>
@@ -232,15 +232,10 @@
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
                     <li class="has-submenu">
-                        <a href="#"> <i class="ion-md-speedometer"></i> Imagenes </a>
+                        <a href="{{ url('/imagenes') }}"> <i class="far fa-images"></i> Imagenes </a>
                     </li>
                     <li class="has-submenu">
-                        <a href="#"> <i class="ion-md-speedometer"></i> Usuarios </a>
-                        <ul class="submenu">
-                            <li><a href="index.html">Dashboard 1</a></li>
-                            <li><a href="dashboard-2.html">Dashboard 2</a></li>
-                            <li><a href="dashboard-3.html">Dashboard 3</a></li>
-                        </ul>
+                        <a href="{{ url('/usuarios') }}"> <i class="fas fa-users"></i> Usuarios </a>
                     </li>
                 </ul>
                 <!-- End navigation menu -->
