@@ -14,6 +14,7 @@
     <!-- Plugins css-->
     <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
+
     <!-- App css<link rel="stylesheet" href="{ mix('css/app.css') }}">-->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"
         id="bootstrap-stylesheet" />
@@ -57,10 +58,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box">
-                                <h4 class="page-title">Nuestros productos</h4>
+                                {{-- <h4 class="page-title">Nuestros productos</h4> --}}
                                 <div class="page-title-right">
                                     <ol class="breadcrumb p-0 m-0">
-                                        <li class="breadcrumb-item"><a href="#">Catalogo </a></li>
+                                        <li class="breadcrumb-item"><a href="#">
+                                            movistar </a></li>
 
                                     </ol>
                                 </div>
@@ -209,6 +211,10 @@
 
 
     @livewireScripts
+    
+ {{-- <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script> --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <!-- Vendor js -->
       <!-- jquery para mensaje de enotificacion-->
       <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
@@ -217,20 +223,13 @@
 
     <script src="{{ asset('assets/libs/moment/moment.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery-scrollto/jquery.scrollTo.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+   
 
-    <!-- Chat app -->
-    <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script>
-
+  
     <!-- Todo app -->
     <script src="{{ asset('assets/js/pages/jquery.todo.js') }}"></script>
 
-    <!--Morris Chart-->
-    <script src="{{ asset('assets/libs/morris-js/morris.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/raphael/raphael.min.js') }}"></script>
-
-    <!-- Sparkline charts -->
-    <script src="{{ asset('assets/libs/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+   
 
     <!-- Dashboard init JS -->
     <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>

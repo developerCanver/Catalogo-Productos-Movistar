@@ -6,8 +6,12 @@ use Livewire\Component;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Imagen;
+use Livewire\WithFileUploads;
+
+
 class ImagenLivewire extends Component
 {   
+    use WithFileUploads;
 
     public $titulo,$imagen;
 
@@ -23,13 +27,24 @@ class ImagenLivewire extends Component
 /*id_imagen   titulo imagen*/
     public function store()
     {
-        $usuario = new Imagen();
-        $usuario->name=$this->titulo;
-        $usuario->imagen= $this->imagen;
-       
-        dd($this->imagen.$this->titulo);
+         $this->validate([
+        'imagen' => 'required', // 1MB Max
+        'titulo' => 'required',
+     ]);
 
+        $usuario = new Imagen();
+        $usuario->titulo=$this->titulo;
+
+        $file=$this->imagen;
+        $name = time().$file->getClientOriginalName();
+        $usuario->imagen=$name;
+        $file->storeAs('img/users/', $name, 'public_uploads');
+        
+        $usuario->save();   
+        $this->dispatchBrowserEvent('alert',
+            ['type' => 'info',  'message' => 'Registro guardado con Exito!  🌝']);
         $this->cancelar();
+        
     }
 
     public function edit($id){
@@ -38,11 +53,12 @@ class ImagenLivewire extends Component
         $this->imagen_id = $id;
         $this->titulo = $user->titulo;
         $this->imagen = $user->imagen;
-        
-       
+
     }
+    
     public function cancelar(){
         $this->titulo = '';
         $this->imagen = '';
+        return redirect('/imagenes');
     }
 }

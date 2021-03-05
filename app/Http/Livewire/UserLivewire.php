@@ -21,6 +21,9 @@ class UserLivewire extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $nombres,$apellidos,$telefono,$direccion,$email,$user_id;
+
+    public $contadorSelect,$count;
+    public $eliminarselect =[];
     public function render()
     {
         $consulta = DB::table('user_models')->get();
@@ -55,9 +58,73 @@ class UserLivewire extends Component
             $this->email = $user->email;
 
         }
+/*
+nombres
+apellidos
+telefono
+direccion
+email
+*/
 
         public  function update(){
-            dd('nombre: '.$this->nombres);
+            $this->validate([
+            'nombres' => 'required|min:3', 
+            'apellidos' => 'required|min:3', 
+            'telefono' => 'required|min:3', 
+            'direccion' => 'required|min:3', 
+            'email' => 'required|min:3', 
+         ]);
+        $user = UserModel::find($this->user_id);
+        $user->update([
+            'nombres' => $this->nombres,
+            'apellidos' => $this->apellidos,
+            'telefono' => $this->telefono,
+            'direccion' => $this->direccion,
+            'email' => $this->email,
+        ]);
+        $this->dispatchBrowserEvent('alert',
+        ['type' => 'success',  'message' => ''.$this->nombres.', Fue actualizado con Exito! ']);
+        $this->cancel();
+
+        }
+
+        public function cancel(){
+             $this->nombres = '';
+             $this->apellidos = '';
+             $this->telefono = '';
+             $this->direccion = '';
+             $this->email = '';
+             return redirect('/usuarios');
+
+        }
+
+      
+
+        //Eliminar
+        public  function destroy($id){
+            UserModel::destroy($id);            
+            $this->dispatchBrowserEvent('alert',
+            ['type' => 'info',  'message' => 'Eliminado con Exito!  🌝']);
+            return redirect('/usuarios');
+        }
+
+         //contar selecionados
+    public function contSelect($count){            
+        $this->contadorSelect=$count;          
+    
+        }
+
+
+        //eliminar registros selecionados
+        public function destroyselect(){
+            UserModel::destroy($this->eliminarselect);
+            $this->contadorSelect=0;
+            
+
+            $this->dispatchBrowserEvent('alert',
+            ['type' => 'info',  'message' => 'Eliminados con Exito!  🌝']);
+            //dd($this->eliminarselect);
+            return redirect('/usuarios');
         }
 
 }
