@@ -41,6 +41,11 @@
                         <h4 class="m-t-0 header-title mb-4"><b>Imagenes</b></h4>
                         <button type="button" class="btn btn-success float-right" data-toggle="modal"
                             data-target="#exampleModal" data-whatever="@mdo">Agregar imagenes</button>
+                            @if ($contadorSelect > 1)
+                            <button onclick="alertDelAll({{$contadorSelect}})" class="btn btn-danger ml-2 float-right pr-2">
+                              Eliminar {{$contadorSelect}}, Registros
+                          </button>                                
+                            @endif
 
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -64,7 +69,7 @@
                                             name="chk" id="myCheck" value="{{$consulta->id_imagen}}">
                                     </td>  
                                     <td>{{ $consulta->id_imagen }}</td>                                 
-                                    <td><img src="/img/users/{{$consulta->imagen}}" style="max-width:150px;" alt="user-image" class="rounded-circle"></td>
+                                    <td><img src="/img/users/{{$consulta->imagen}}" style="max-width:150px;" alt="user-image" class=""></td>
                                     <td>{{$consulta->titulo}}</td>                              
                                     <td>
                                         <button data-toggle="modal" data-target="#updateModal"
@@ -94,6 +99,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
+                                        <input type="hidden" wire:model="imagen_id" class="form-control">
                                         <div class="form-group">
                                             <label for="name">titulo</label>
                                             <input type="file" wire:model="imagen" class="form-control">
@@ -125,7 +131,7 @@
             Swal.fire({
                 title: 'Esta seguro de eliminar ID ' + id + '?',
                 text: "Una vez borrado, no se podrá deshacer los cambios!",
-                icon: 'warning',
+               
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -160,5 +166,26 @@
         }
 
     </script>
+    <script>
+        function alertDelAll(id){
+            Swal.fire({
+                title: 'Esta seguro de eliminar '+id+', Registros?',
+                text: "Una vez borrado, no se podrá deshacer los cambios!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Continuar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        //console.log(id); 
+                        @this.destroyselect(id);
+                    }
+                })
+            }
+        </script>
+
+
 
 </div>

@@ -98,8 +98,6 @@ email
 
         }
 
-      
-
         //Eliminar
         public  function destroy($id){
             UserModel::destroy($id);            

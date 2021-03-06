@@ -13,7 +13,9 @@ class ImagenLivewire extends Component
 {   
     use WithFileUploads;
 
-    public $titulo,$imagen;
+    public $titulo,$imagen,$imagen_id;
+    public $count,$contadorSelect;
+    public $eliminarselect =[];
 
     public function render()
     {
@@ -30,7 +32,7 @@ class ImagenLivewire extends Component
          $this->validate([
         'imagen' => 'required', // 1MB Max
         'titulo' => 'required',
-     ]);
+         ]);
 
         $usuario = new Imagen();
         $usuario->titulo=$this->titulo;
@@ -55,10 +57,60 @@ class ImagenLivewire extends Component
         $this->imagen = $user->imagen;
 
     }
-    
+    public function update()
+    {
+         $this->validate([
+        'imagen' => 'required', // 1MB Max
+        'titulo' => 'required',
+         ]);
+          
+        //$img= Imagen::where('id_imagen',$this->imagen_id)->first();
+        $file=$this->imagen;
+        $nameImagen = time().$file->getClientOriginalName(); 
+        $img= Imagen::find($this->imagen_id); 
+        $img->imagen=$nameImagen;     
+        $img->titulo=$this->titulo;  
+        $file->storeAs('img/users/', $nameImagen, 'public_uploads');        
+        
+        $img->update();
+        $this->dispatchBrowserEvent('alert',
+        ['type' => 'success',  'message' => ''.$this->titulo.', Fue actualizado con Exito! ']);
+ 
+        $this->cancelar();
+        
+    }
+
+
     public function cancelar(){
         $this->titulo = '';
         $this->imagen = '';
         return redirect('/imagenes');
     }
+          //Eliminar
+          public  function destroy($id){
+            Imagen::destroy($id);            
+            $this->dispatchBrowserEvent('alert',
+            ['type' => 'info',  'message' => 'Eliminado con Exito!  🌝']);
+            return redirect('/imagenes');
+        }
+
+         //contar selecionados
+    public function contSelect($count){            
+        $this->contadorSelect=$count;          
+    
+        }
+
+
+        //eliminar registros selecionados
+        public function destroyselect(){
+            Imagen::destroy($this->eliminarselect);
+            $this->contadorSelect=0;
+            
+
+            $this->dispatchBrowserEvent('alert',
+            ['type' => 'info',  'message' => 'Eliminados con Exito!  🌝']);
+            //dd($this->eliminarselect);
+            return redirect('/imagenes');
+        }
+
 }

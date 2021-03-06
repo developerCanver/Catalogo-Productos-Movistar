@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    @ livewire('user-livewire')     
+    @livewire('inicio-livewire')     
     </div>
 </div>
 @endsection

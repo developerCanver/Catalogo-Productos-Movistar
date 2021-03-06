@@ -11,6 +11,6 @@ class Imagen extends Model
     protected $fillable = [
         'imagen', 'titulo',              
        ];
-    protected $primaryKey = 'id_imagen ';
+    protected $primaryKey = 'id_imagen';
 
 }
