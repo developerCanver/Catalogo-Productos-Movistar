@@ -17,6 +17,7 @@ class CreateImagensTable extends Migration
             $table->increments('id_imagen');
             $table->string('titulo');
             $table->string('imagen');
+            $table->enum('status', ['on', 'off']);
             $table->timestamps();
         });
     }

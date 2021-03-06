@@ -13,31 +13,32 @@ class ImagenLivewire extends Component
 {   
     use WithFileUploads;
 
-    public $titulo,$imagen,$imagen_id;
+    public $titulo,$imagen,$imagen_id,$status;
     public $count,$contadorSelect;
     public $eliminarselect =[];
 
     public function render()
     {
         $consulta = DB::table('imagens')->get();
-
         return view('livewire.imagen-livewire',[        
             'consultas' => $consulta
-        ]);
-        
+        ]);        
     }
-/*id_imagen   titulo imagen*/
+
     public function store()
     {
          $this->validate([
         'imagen' => 'required', // 1MB Max
-        'titulo' => 'required',
+        'titulo' => 'required|min:3',
+        'status' => 'required',
          ]);
-
+            //dd($this->status);
         $usuario = new Imagen();
         $usuario->titulo=$this->titulo;
+        $usuario->status=$this->status;
 
         $file=$this->imagen;
+        
         $name = time().$file->getClientOriginalName();
         $usuario->imagen=$name;
         $file->storeAs('img/users/', $name, 'public_uploads');
@@ -55,6 +56,7 @@ class ImagenLivewire extends Component
         $this->imagen_id = $id;
         $this->titulo = $user->titulo;
         $this->imagen = $user->imagen;
+        $this->status=$user->status;
 
     }
     public function update()
@@ -63,13 +65,21 @@ class ImagenLivewire extends Component
         'imagen' => 'required', // 1MB Max
         'titulo' => 'required',
          ]);
-          
+         $img= Imagen::find($this->imagen_id); 
+
+         if (is_file($this->imagen)) {
+            $file=$this->imagen;
+            $nameImagen = time().$file->getClientOriginalName();            
+            $img->imagen=$nameImagen;  
+         }else{
+            $img->imagen=$this->imagen; 
+         }
+         
         //$img= Imagen::where('id_imagen',$this->imagen_id)->first();
-        $file=$this->imagen;
-        $nameImagen = time().$file->getClientOriginalName(); 
-        $img= Imagen::find($this->imagen_id); 
-        $img->imagen=$nameImagen;     
+        
         $img->titulo=$this->titulo;  
+        $img->status=$this->status;
+
         $file->storeAs('img/users/', $nameImagen, 'public_uploads');        
         
         $img->update();
@@ -84,6 +94,7 @@ class ImagenLivewire extends Component
     public function cancelar(){
         $this->titulo = '';
         $this->imagen = '';
+        $this->status = '';
         return redirect('/imagenes');
     }
           //Eliminar

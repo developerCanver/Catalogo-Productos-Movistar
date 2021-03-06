@@ -9,7 +9,7 @@ class Imagen extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'imagen', 'titulo',              
+        'imagen', 'titulo','status',       
        ];
     protected $primaryKey = 'id_imagen';
 
