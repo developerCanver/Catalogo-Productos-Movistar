@@ -4,15 +4,12 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header p-3 mb-2 bg-success text-white">
-                    <h5 style="color:#fff" class="modal-title text-while" id="exampleModalLabel">Agregar Imagen:
-
-                    </h5>
+                    <h5 style="color:#fff" class="modal-title text-while" id="exampleModalLabel">Agregar Imagen:</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
                     <div class="form-group">
                         <label for="name">Imagen</label>
                         <input type="file" wire:model="imagen" class="form-control">
@@ -42,8 +39,6 @@
                     <button type="button" style="background: #ffffff;color:#1a2942;" class="btn btn-secondary close-btn"
                     data-dismiss="modal">Cancelar</button>
                 <button type="submit" wire:click="store"  style="background: #009ef4;" class="btn btn-primary">Registrar</button>
-                
-
                 </div>
             </div>
         </div>
@@ -94,7 +89,7 @@
                                     <td> @if ($consulta->status=="on")
                                         <span class="badge badge-primary mb-3">Activo</span>
                                     @else
-                                    <span class="badge badge-warning mb-3">Desactivado</span>
+                                    <span class="badge badge-secondary mb-3">Desactivado</span>
                                     @endif </td>                              
                                     <td>
                                         <button data-toggle="modal" data-target="#updateModal"
@@ -133,6 +128,7 @@
                                         <div class="form-group">
                                             <label for="email">titulo </label>
                                             <input type="text" class="form-control" wire:model="titulo" value="Pepito@gmail.com">
+                                            @error('titulo') <span class="text-danger">{{ $message }}</span>@enderror 
                                         </div>   
                                         <div class="form-group ">
                                             <label for="name">Estado</label>                                           
@@ -152,8 +148,8 @@
                                     <div class="modal-footer">
                                         <button type="button"  style="background: #ffffff;color:#1a2942;" wire:click.prevent="cancel()" class="btn btn-secondary"
                                             data-dismiss="modal">Cerrar</button>
-                                        <button type="button" wire:click.prevent="update({{ $consulta->id_imagen }})"
-                                            class="btn btn-primary" data-dismiss="modal">Actualizar</button>
+                                        <button type="submit" wire:click="update({{ $consulta->id_imagen }})"
+                                            class="btn btn-primary">Actualizar</button>                                            
                                     </div>
                                 </div>
                             </div>
@@ -169,11 +165,9 @@
                         @endif
                     </div>
                 </div>
-            </div>
-          
+            </div>          
         </div>
     </div>
-
     <script>
         function MuestraAlert(id) {
             Swal.fire({
@@ -197,7 +191,6 @@
 
     <script>
         function myFunction() {
-
             //contador de checbox
             var a = document.getElementsByName('chk');
             var newvar = 0;
@@ -205,7 +198,6 @@
             for (let count = 0; count < a.length; count++) {
                 if (a[count].checked == true) {
                     newvar = newvar + 1;
-
                     // console.log(a[count].checked);
                 }
             }
@@ -233,7 +225,4 @@
                 })
             }
         </script>
-
-
-
 </div>

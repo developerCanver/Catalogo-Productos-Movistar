@@ -70,7 +70,8 @@ class ImagenLivewire extends Component
          if (is_file($this->imagen)) {
             $file=$this->imagen;
             $nameImagen = time().$file->getClientOriginalName();            
-            $img->imagen=$nameImagen;  
+            $img->imagen=$nameImagen;
+            $file->storeAs('img/users/', $nameImagen, 'public_uploads');   
          }else{
             $img->imagen=$this->imagen; 
          }
@@ -80,7 +81,7 @@ class ImagenLivewire extends Component
         $img->titulo=$this->titulo;  
         $img->status=$this->status;
 
-        $file->storeAs('img/users/', $nameImagen, 'public_uploads');        
+              
         
         $img->update();
         $this->dispatchBrowserEvent('alert',

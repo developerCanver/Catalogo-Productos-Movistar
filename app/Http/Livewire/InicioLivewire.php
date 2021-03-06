@@ -12,7 +12,8 @@ class InicioLivewire extends Component
     public $nombres,$apellidos,$telefono,$direccion,$email;
     public function render()
     {
-        $consulta = DB::table('imagens')->get();
+        $consulta = DB::table('imagens')
+        ->where('status', '=', 'on')->get();
         return view('livewire.inicio-livewire',[        
             'consultas' => $consulta
         ]);
