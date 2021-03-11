@@ -13,7 +13,6 @@
                             <span></span>
                         </div>
                     </a>
-                    <!-- End mobile menu toggle-->
                 </li>
 
                 <li class="dropdown notification-list">
@@ -31,7 +30,7 @@
                                     <a href="" class="text-dark">
                                         <small>Clear All</small>
                                     </a>
-                                </span>Notification
+                                </span>Notificación
                             </h5>
                         </div>
 
@@ -99,7 +98,7 @@
 
                         <!-- All-->
                         <a href="javascript:void(0);" class="dropdown-item text-center notify-item notify-all">
-                            See all notifications
+                            Últimos 5 registros
                         </a>
                     </div>
                 </li>

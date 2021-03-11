@@ -217,9 +217,9 @@
 
     <!-- Vendor js -->
       <!-- jquery para mensaje de enotificacion-->
-      <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+      {{-- <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script> --}}
 
-    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/vendor.min.js') }}"></script> --}}
 
     <script src="{{ asset('assets/libs/moment/moment.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery-scrollto/jquery.scrollTo.min.js') }}"></script>
