@@ -117,29 +117,25 @@
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
                         <div class="dropdown-header noti-title">
-                            <a href="{{ url('/dashboard') }}">
+                            <a href="{{ url('/') }}">
                                 <h6 class="text-overflow m-0">Inicio</h6>
                             </a>
                         </div>
 
                         <!-- item-->
-                        <a href="{{ route('profile.show') }}" class="dropdown-item notify-item">
+                        {{-- <a href="{{ route('profile.show') }}" class="dropdown-item notify-item">
                             <i class="mdi mdi-account-outline"></i>
 
                             <span>Profile</span>
                         </a>
-
-                        <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="mdi mdi-settings-outline"></i>
                             <span>Settings</span>
                         </a>
-
-                        <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="mdi mdi-lock-outline"></i>
                             <span>Lock Screen</span>
-                        </a>
+                        </a> --}}
 
                         <div class="dropdown-divider"></div>
                         <form method="POST" action="{{ route('logout') }}">

@@ -69,7 +69,7 @@
                                     <th>ID</th>
                                     <th>Imagen</th>
                                     <th>Titulo</th>
-                                    <th>Stado</th>
+                                    <th>Estado</th>
 
                                     <th>Opciones</th>
                                 </tr>
