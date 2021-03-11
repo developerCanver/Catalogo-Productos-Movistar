@@ -48,7 +48,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Inscribirse</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -57,7 +57,7 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <input type="text" wire:model="id_imagen">
+                                <input type="hidden" wire:model="id_imagen">
                                 <label for="exampleFormControlInput1">Nombres</label>
                                 <input type="text" class="form-control" wire:model="nombres">
                                 @error('nombres') <span class="text-danger">{{ $message }}</span>@enderror

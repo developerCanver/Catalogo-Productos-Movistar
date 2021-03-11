@@ -73,14 +73,22 @@
 
                             <thead>
                                 <tr>
+                                    <th colspan="7" >ID USUARIO</th>
+                                    <th colspan="2">ID IMAGEN</th>
+                                    <th rowspan="2" class="text-center" >Opciones</th>
+                                  
+                                </tr>
+
+                                <tr>
                                     <th></th>
-                                    <th>ID</th>
+                                    <th>ID </th>
                                     <th>Nombre</th>
                                     <th>apellidos</th>
                                     <th>telefono</th>
                                     <th>direccion</th>
                                     <th>email</th>
-                                    <th>Opciones</th>
+                                    <th>ID </th> 
+                                    <th> Imagen</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,6 +104,14 @@
                                     <td>{{$consulta->telefono}}</td>
                                     <td>{{$consulta->direccion}}</td>
                                     <td>{{$consulta->email}}</td>
+                                    @if (empty($consulta->id_imagen))
+                                    <td></td>
+                                        <td  ><span class="badge badge-secondary mb-3">Imagen  Borrada</span></td>
+                                    @else
+                                    <td>{{$consulta->id_imagen}}</td>
+                                    <td>{{$consulta->titulo}}</td> 
+                                    @endif
+                                   
                                     <td>
                                         <button data-toggle="modal" data-target="#updateModal"
                                             wire:click="edit({{ $consulta->id_user }})"

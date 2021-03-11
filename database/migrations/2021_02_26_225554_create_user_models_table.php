@@ -19,12 +19,16 @@ class CreateUserModelsTable extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('telefono');
-            $table->string('direccion');           
-            $table->unsignedInteger('imagen_id'); 
+            $table->string('direccion'); 
+            $table->enum('notification', ['1', '0']);   
+            $table->integer('imagen_id')->unsigned()->nullable();       
+            // $table->unsignedInteger('imagen_id')
             $table->timestamps();
             
 
-            $table->foreign('imagen_id')->references('id_imagen')->on('imagens');
+            $table->foreign('imagen_id')->references('id_imagen')->on('imagens')
+            ->onDelete('set null')
+            ->onUpdate('cascade');
         });
     }
 

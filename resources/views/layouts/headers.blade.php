@@ -15,7 +15,7 @@
                     </a>
                 </li>
 
-                <li class="dropdown notification-list">
+                {{-- <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#"
                         role="button" aria-haspopup="false" aria-expanded="false">
                         <i class="mdi mdi-bell-outline noti-icon"></i>
@@ -101,7 +101,7 @@
                             Últimos 5 registros
                         </a>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="dropdown notification-list">
                     @if (Route::has('login'))
@@ -204,7 +204,7 @@
                 </a>
             </div>
             <!-- LOGO -->
-            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+            {{-- <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
 
                 <li class="d-none d-sm-block">
                     <form class="app-search">
@@ -220,13 +220,14 @@
                         </div>
                     </form>
                 </li>
-            </ul>
+            </ul> --}}
             <div class="clearfix"></div>
         </div>
     </div>
     <!-- end Topbar -->
     <div class="topbar-menu">
         <div class="container-fluid">
+            @auth
             <div id="navigation">
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
@@ -241,6 +242,8 @@
 
                 <div class="clearfix"></div>
             </div>
+            @endauth
+           
             <!-- end #navigation -->
         </div>
         <!-- end container -->

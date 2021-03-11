@@ -127,18 +127,18 @@
                     
                                         <div class="form-group">
                                             <label for="email">titulo </label>
-                                            <input type="text" class="form-control" wire:model="titulo" value="Pepito@gmail.com">
+                                            <input type="text" class="form-control" wire:ignore="titulo" value="Pepito@gmail.com">
                                             @error('titulo') <span class="text-danger">{{ $message }}</span>@enderror 
                                         </div>   
                                         <div class="form-group ">
                                             <label for="name">Estado</label>                                           
                                             <div class="mb-3">
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="customRadio1" name="animal"  wire:model="status" value="on" class="custom-control-input" checked>
+                                                    <input type="radio" id="customRadio1" name="animal" wire:ignore.self="status" value="on" class="custom-control-input" checked>
                                                     <label class="custom-control-label text-xs" for="customRadio1" >Activo</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="customRadio2" wire:model="status" name="animal" value="off" class="custom-control-input">
+                                                    <input type="radio" id="customRadio2" wire:ignore.self="status" name="animal" value="off" class="custom-control-input">
                                                     <label class="custom-control-label text-xs" for="customRadio2">Desactivada</label>
                                                 </div>
                                             </div>
@@ -172,7 +172,7 @@
         function MuestraAlert(id) {
             Swal.fire({
                 title: 'Esta seguro de eliminar ID ' + id + '?',
-                text: "Una vez borrado, no se podrá deshacer los cambios!",
+                text: "Una vez borrado, no se podrá deshacer los cambios!,  Se recomienda realizar un Bakup en la página Usuarios",
                
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -210,7 +210,7 @@
         function alertDelAll(id){
             Swal.fire({
                 title: 'Esta seguro de eliminar '+id+', Registros?',
-                text: "Una vez borrado, no se podrá deshacer los cambios!",
+                text: "Una vez borrado, no se podrá deshacer los cambios!, Se recomienda realizar un Bakup en la ágina Usuarios",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

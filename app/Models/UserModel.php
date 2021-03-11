@@ -9,7 +9,7 @@ class UserModel extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nombres', 'apellidos', 'telefono', 'direccion', 'email','imagen_id',      
+        'nombres', 'apellidos', 'telefono', 'direccion', 'email','imagen_id', 'notification',     
        ];
        protected $primaryKey = 'id_user';
        

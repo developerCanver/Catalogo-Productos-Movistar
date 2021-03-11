@@ -19,10 +19,10 @@ Route::get('/', function () {
 
 Route::get('/imagenes', function () {
     return view('imagenes');
-});
+})->middleware('auth');
 Route::get('/usuarios', function () {
     return view('usuarios');
-});
+})->middleware('auth');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

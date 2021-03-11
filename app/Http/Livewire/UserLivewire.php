@@ -20,18 +20,22 @@ class UserLivewire extends Component
     use AuthorizesRequests;
     protected $paginationTheme = 'bootstrap';
 
-    public $nombres,$apellidos,$telefono,$direccion,$email,$user_id;
+    public $nombres,$apellidos,$telefono,$direccion,$email,$notification,$user_id;
 
     public $contadorSelect,$count;
     public $eliminarselect =[];
     public function render()
     {
-        $consulta = DB::table('user_models')->get();
-
+        $consulta = DB::table('user_models')
+        ->leftJoin('imagens','imagens.id_imagen', '=', 'user_models.imagen_id')->get();
+        //dd($consulta);
         return view('livewire.user-livewire',[        
             'consultas' => $consulta
         ]);
     }
+/*
+
+*/
 
     public function store()
     {
@@ -42,6 +46,7 @@ class UserLivewire extends Component
         $usuario->telefono= $this->telefono;
         $usuario->direccion= $this->direccion;
         $usuario->email= $this->email;
+        $usuario->notification= '1';
 
         dd($this->direccion.$this->email);
     }
@@ -58,13 +63,6 @@ class UserLivewire extends Component
             $this->email = $user->email;
 
         }
-/*
-nombres
-apellidos
-telefono
-direccion
-email
-*/
 
         public  function update(){
             $this->validate([
