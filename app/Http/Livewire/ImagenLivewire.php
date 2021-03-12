@@ -28,7 +28,7 @@ class ImagenLivewire extends Component
     public function store()
     {
          $this->validate([
-        'imagen' => 'required', // 1MB Max
+        'imagen' => 'required|image', // 1MB Max
         'titulo' => 'required|min:3',
         'status' => 'required',
          ]);
@@ -62,7 +62,7 @@ class ImagenLivewire extends Component
     public function update()
     {
          $this->validate([
-        'imagen' => 'required', // 1MB Max
+        'imagen' => 'required|image', // 1MB Max
         'titulo' => 'required',
          ]);
          $img= Imagen::find($this->imagen_id); 
