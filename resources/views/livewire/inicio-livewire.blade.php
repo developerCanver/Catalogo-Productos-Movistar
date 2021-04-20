@@ -10,7 +10,7 @@
             display: inline-block;
             cursor: pointer;
             color: #ffffff;
-
+            
             font-size: 15px;
             font-weight: bold;
             padding: 5px 76px;
@@ -27,24 +27,57 @@
             top: 1px;
         }
 
+        .myButton2 {
+            background: linear-gradient(to bottom, #30d83d 5%, #269719 100%);
+            background-color: ##b48484;
+            border: hidden;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 15px 15px  0 0;
+            color: #ffffff;
+            margin: auto;
+    text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 5px 76px;
+            text-decoration: none;
+            text-shadow: 0px 0px 0px #3d768a;
+        }
+
+        .myButton2:hover {
+            background: linear-gradient(to bottom, #0171ad 5%, #059ad8 100%);
+        }
+
+        .myButton2:active {
+            position: relative;
+            top: 1px;
+        }
+        a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
     </style>
     <div class="row">
         @foreach ($consultas as $consulta)
 
         <div class="col-lg-6">
+            
+            <a  href="https://api.whatsapp.com/message/KV3Z57VSZABNP1" target="_black" class=" btn-block  myButton2">Whatsapp </a>
+
             <div class="card card-inverse text-white">
                 <img class="card-img img-fluid" style="box-shadow: 0px 8px 14px 2px #276873;"
                     src="img/users/{{$consulta->imagen}}" alt="Card image">
-              
-                <button wire:click="edit({{ $consulta->id_imagen }})" class=" btn-block  myButton" data-toggle="modal"
+
+                <button style="margin-top: -.1rem;" wire:click="edit({{ $consulta->id_imagen }})" class=" btn-block  myButton" data-toggle="modal"
                     data-target="#exampleModal">Ingresar datos </button>
             </div>
         </div>
         @endforeach
     </div>
-{{-- modal --}}
-<div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    {{-- modal --}}
+    <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

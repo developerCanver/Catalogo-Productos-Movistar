@@ -57,14 +57,16 @@ class ImagenLivewire extends Component
         $this->titulo = $user->titulo;
         $this->imagen = $user->imagen;
         $this->status=$user->status;
+       
 
     }
     public function update()
     {
          $this->validate([
-        'imagen' => 'required|image', // 1MB Max
+         // 1MB Max
         'titulo' => 'required',
          ]);
+        // dd($this->imagen_id);
          $img= Imagen::find($this->imagen_id); 
 
          if (is_file($this->imagen)) {
@@ -80,8 +82,6 @@ class ImagenLivewire extends Component
         
         $img->titulo=$this->titulo;  
         $img->status=$this->status;
-
-              
         
         $img->update();
         $this->dispatchBrowserEvent('alert',
